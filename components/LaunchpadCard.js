@@ -35,7 +35,7 @@ const useStyles = makeStyles(theme => {
       //minHeight: '400px',
       display: 'flex',
       flexDirection:'column',
-      minWidth: '550px'
+      width: '550px'
     },
     actionArea: { 
       height: '100%'
@@ -74,7 +74,7 @@ const LaunchpadCard = (props) => {
     <Link href={'/launchpad/'+categorySlug+'/'+page.slug}>
       <CardActionArea className={classes.actionArea}>
       <CardContent className={classes.cardContent}>
-      <div style={{position:'relative', width: '100%', height: '700px', border:'1px solid rgba(0,0,0,0.5)', borderRadius: '7px', boxShadow: '1px 1px 5px 1px rgba(0,0,0,0.3)'}}>
+      <div style={{position:'relative', width: '100%', height: '400px', border:'1px solid rgba(0,0,0,0.5)', borderRadius: '7px', boxShadow: '1px 1px 5px 1px rgba(0,0,0,0.3)'}}>
       <Image
           className={classes.media}
           src={'/launchpad/'+page.thumbnail}

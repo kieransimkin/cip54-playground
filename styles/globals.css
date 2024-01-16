@@ -40,14 +40,22 @@ a, a:link, a:visited, a:focus, a:active {
   position: relative;
   left: -5px;
 }
-.tandem { 
+#customized-dialog-title {
+  padding: 0;
+}
+.MuiDialogContent-root:first-child { 
+  padding-bottom: 0px;
+  overflow: visible;
+}
+.tandem > a, .tandem > a:active, .tandem > a:focus, .tandem > a:link, .tandem > a:visited { 
   display: inline-block;
-  position: absolute;
-  font-family: monospace;
+  position: fixed;
+  font-family: monospace !important;
   letter-spacing: 0;
-  font-size: 8px;
+  font-size: 5px;
   font-weight: 900;
-  cursor: pointer;
+  cursor: none;
+  color:#ffffff55;
   margin-right:1em;
   bottom:0;
   right: 0;

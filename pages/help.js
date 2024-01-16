@@ -16,6 +16,7 @@ import PictureCard from '../components/PictureCard';
 import { alpha } from '@material-ui/core/styles/colorManipulator';
 import VideoCard from '../components/VideoCard'
 import ContentCard from '../components/ContentCard'
+import MintButton from '../components/MintButton'
 import Link from 'next/link';
 import TwitterFeed from '../components/TwitterFeed';
 import BuyButton from '../components/BuyButton';
@@ -100,7 +101,7 @@ export default function Help() {
       
       <div className={classes.bg} />
       <Typography color="textPrimary" variant='h1' align="center" className={classes.heading}>
-          About CIP54
+          About Arden <sup>(CIP54)</sup>
         </Typography><br />
       <main className={classes.main}>
       
@@ -189,12 +190,11 @@ export default function Help() {
               <Typography variant="body1">
                 Buy, sell or trade your Smart NFTs at <a href="https://plutus.art/" target="_blank" rel="noreferrer">Plutus.art</a>, with native support for CIP54 assets right in the marketplace.
                 <ul className="infolist">
-
-                <li><Link href="/launchpad/smart-life/about">Smart Life</Link> - The first CIP54 collection is now minting</li>
-                <li><Link href="/launchpad/smart-avatars/about">Smart Avatars</Link> - The first in a new series of true on-chain avatars</li>
-                
+                <li><Link href="/launchpad/smart-life/about">Smart Life</Link> - The first CIP54 collection is now minting <BuyButton /></li>
+                <li><Link href="/launchpad/smart-avatars/about">Smart Avatars</Link> - The first in a new series of true on-chain avatars <MintButton /></li>
+                <li><Link href="/launchpad/adaquote/about">ADAquote</Link> - The first practical use of CIP54 to offer an enhanced version of an existing project.</li>
                 </ul>
-                <BuyButton />
+                
               </Typography>
                 <a href="https://plutus.art/collection/smartlife" target="_blank" rel="noreferrer">
                   <img src="/examples/smart-life-thumb.png" width="250" height="227" alt="Smart Life" style={{borderRadius:'20px',border:'1px solid rgba(0,0,0,0.6)'}}/>
@@ -214,7 +214,7 @@ export default function Help() {
                 Further reading
               </Typography><br />
               <Typography variant="body1">
-                All of the parts of the Smart NFT API including this website itself are provided opensource on Github - SmartNFTPortal and Libcip54 are also available as npm packages<br />&nbsp;
+                All of the parts of the Arden API including this website itself are provided opensource on Github - SmartNFTPortal and Libcip54 are also available as npm packages<br />&nbsp;
                 <table style={{borderSpacing:'10px', marginLeft:'auto',marginRight:'auto'}} border={1} width="90%" className="linktable">
                   
                   <tr><td valign="top"><a href="https://github.com/kieransimkin/smartnftportal" target="_blank" rel="noreferrer"><Typography variant="body1">SmartNFTPortal</Typography></a></td><td>This is a react component which gives you everything you need to render a Smart NFT in the front end - this is the component used by the Playground, and by <a href="https://plutus.art/" target="_blank" rel="noreferrer">Plutus.art</a></td></tr>

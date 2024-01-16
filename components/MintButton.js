@@ -15,23 +15,17 @@ const useStyles = makeStyles(theme => {
   const second = alpha(theme.palette.secondary.main, 1);
   return {
   
-    root: {
-      fontFamily: "'Baloo Thambi 2', cursive",
-      fontWeight: 600,
-      fontSize: '40px',
-      letterSpacing: '0.02em',
-      borderRadius: '1.5em',
-      paddingLeft: '1em',
-      paddingRight: '1em',
-      paddingTop: '0.2em',
-      paddingBottom:'0.2em',
-      background:`radial-gradient(circle at top left, ${second} 0%, ${first} 90%)`,
-      boxShadow:'2px 2px 10px 5px rgba(0,0,0,0.5)',
-      border:'1px solid black'
-    }
+    
+      root: {
+        fontFamily: "'Baloo Thambi 2', cursive",
+        fontWeight: 600,
+        letterSpacing: '0.02em',
+        borderRadius: '1.5em'
+      }
+    
   };
 });
-const BigMintButton = (props) => {
+const MintButton = (props) => {
   const [icon, setIcon] = useState(<CheckoutIcon />);
   const [on, setOn] = useState(false);
   const [mintDialogOpen, setMintDialogOpen] = useState(false);
@@ -62,15 +56,14 @@ const BigMintButton = (props) => {
   return (
     <>
     <MintSmartAvatarDialog open={mintDialogOpen} onClose={mintDialogClose} />
-    
-    <Button onClick={onClick} variant="contained" className={classes.root} size="large" color="secondary" aria-controls="simple-menu" aria-haspopup="true">
-      <div style={{marginRight: '0.3em'}}>{icon}</div> Mint One
+    <Button variant="contained" className={classes.root} size="large" endIcon={<CheckoutIcon />} color="secondary" aria-controls="simple-menu" aria-haspopup="true" onClick={onClick}>
+      Mint One
     </Button>
     </>
     
   );
 }
-BigMintButton.propTypes = {
+MintButton.propTypes = {
   
 };
-export default BigMintButton;
+export default MintButton;

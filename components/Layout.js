@@ -40,7 +40,7 @@ const Layout = ({children}) => {
             }
           },
           palette: { 
-
+            
           }
           
     });

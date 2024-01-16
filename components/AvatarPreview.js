@@ -68,14 +68,27 @@ const useStyles = makeStyles(theme => {
       right:'0',
       marginRight:'0px'
     },
-    actionSelect: { 
+    actionSelect: {
+      '& *': { 
+        fontFamily: "'Baloo Thambi 2', cursive",
+        fontSize:'0.9em',    
+        fontWeight: 600,
+        letterSpacing: '0.02em',
+        cursor: 'pointer'
+      }, 
       marginTop:'0.5em',
+      cursor: 'pointer',
       paddingLeft:'1em',
       paddingTop:'1em',
       paddingBottom:'1em',
       paddingRight:'3em',
       borderRadius:'15px',
       appearance: 'none',
+      
+    fontFamily: "'Baloo Thambi 2', cursive",
+    fontSize:'0.9em',    
+    fontWeight: 600,
+    letterSpacing: '0.02em',
       backgroundImage: `url("data:image/svg+xml;charset=US-ASCII,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%22292.4%22%20height%3D%22292.4%22%3E%3Cpath%20fill%3D%22%23131313%22%20d%3D%22M287%2069.4a17.6%2017.6%200%200%200-13-5.4H18.4c-5%200-9.3%201.8-12.9%205.4A17.6%2017.6%200%200%200%200%2082.2c0%205%201.8%209.3%205.4%2012.9l128%20127.9c3.6%203.6%207.8%205.4%2012.8%205.4s9.2-1.8%2012.8-5.4L287%2095c3.5-3.5%205.4-7.8%205.4-12.8%200-5-1.9-9.2-5.5-12.8z%22%2F%3E%3C%2Fsvg%3E")`,
       backgroundRepeat: 'no-repeat',
       backgroundPosition: 'right 0.9rem top 50%',
@@ -148,22 +161,16 @@ const AvatarPreview = (props) => {
     setAction(actionRef.current.value);
     setContinueAction(actionRef.current.value);
   }
-  const layers =[];
-  layers.push({...getAnimations(), images:["/LPC-spritesheet-collection/input/shadow/adult/shadow.png"] })
-  if (spec.body) { 
-    console.log('loading body');
-    const bmp = new createjs.Bitmap("/LPC-spritesheet-collection/input/body/bodies/"+spec.body+"/universal.png");
-    bmp.filters = [
-      new createjs.ColorFilter(1,1,0.5,1, 0,100,0,0)
+  
+  var manifest = [
+    {src:"/fractal-colorwaves-background.jpg", id:"fractal"}    
     ];
-    const bounds = bmp.getBounds();
-    
-    bmp.cache(0, 0,bounds?.width, bounds?.height);       // use our StageGL to cache
-    
-    layers.push({...getAnimations(), images:[bmp.cacheCanvas]})
+  
+  if (spec?.body) { 
+    manifest.push({src:"/LPC-spritesheet-collection/input/body/bodies/"+spec.body+"/universal.png",id:"body"});
   }
-  if (spec.head) { 
-    layers.push({...getAnimations(), images:["/LPC-spritesheet-collection/input/head/heads/"+spec.head+"/universal.png"]})
+  if (spec?.head) { 
+    manifest.push({src:"/LPC-spritesheet-collection/input/head/heads/"+spec.head+"/universal.png",id:'head'})
   }
   
   useEffect(()=> { 
@@ -173,13 +180,6 @@ const AvatarPreview = (props) => {
     const animations=[];
     
 	  var queue = new createjs.LoadQueue(false);
-    
-    var manifest = [
-      {src:"/fractal-colorwaves-background.jpg", id:"fractal"}    
-      ];
-     
-  
-  
     queue.loadManifest(manifest,true);
     function onScroll(e) { 
       
@@ -285,15 +285,40 @@ queue.addEventListener("complete",()=>{
   ground.cache(0, 0, groundImg.width*2, groundImg.height*2);
   stage.addChild(ground)
   stage.addChild(circle);
+  const layers =[];
+
+  layers.push({...getAnimations(), images:["/LPC-spritesheet-collection/input/shadow/adult/shadow.png"] })
+  if (spec?.body) { 
+    console.log('loading body');
+    const bmp = new createjs.Bitmap("/LPC-spritesheet-collection/input/body/bodies/"+spec.body+"/universal.png");
+    console.log(spec.bodyColour)
+    bmp.filters = [
+      new createjs.ColorFilter(1,1,1,1, spec.bodyColour.rgb.r-128,spec.bodyColour.rgb.g-128,spec.bodyColour.rgb.b-128,0)
+    ];
+    const bounds = bmp.getBounds();
+    
+    bmp.cache(0, 0,bounds?.width, bounds?.height);       // use our StageGL to cache
+    
+    layers.push({...getAnimations(), images:[bmp.cacheCanvas]})
+  }
+  if (spec?.head) { 
+    const bmp = new createjs.Bitmap("/LPC-spritesheet-collection/input/head/heads/"+spec.head+"/universal.png");
+    console.log(spec.headColour)
+    bmp.filters = [
+      new createjs.ColorFilter(1,1,1,1, spec.headColour.rgb.r-128,spec.headColour.rgb.g-128,spec.headColour.rgb.b-128,0)
+    ];
+    const bounds = bmp.getBounds();
+    
+    bmp.cache(0, 0,bounds?.width, bounds?.height);       // use our StageGL to cache
+    
+    layers.push({...getAnimations(), images:[bmp.cacheCanvas]})
+  }
   for (const layer of layers) { 
     
     const sheet = new createjs.SpriteSheet(layer);
     
     const animation = new createjs.Sprite(sheet,action+direction);
-    
- 
-
-//animation.cache(0,0,animation.width,animation.height)
+    //animation.cache(0,0,animation.width,animation.height)
     animation.setTransform((256-64*zoom)/2,(256-64*zoom)/2-(8*zoom),zoom,zoom);
     animation.addEventListener('animationend',(e) => { 
       if (e.next=='walkup'||e.next=='walkdown'||e.next=='walkleft'||e.next=='walkright') { 
@@ -381,6 +406,13 @@ queue.addEventListener("complete",()=>{
       <Typography variant="caption" style={{textShadow:'1px 1px 2px #000000ff, 1px 1px 2px #000000ff'}}>
         Zoom: <b><span ref={zoomLabelRef}>×2</span></b>
         </Typography>
+        </div>
+        <div style={{position:'relative'}}>
+        <div style={{textAlign:'center', position:'relative',maxWidth: '230px', top:'0.7em',left:'0', translateX:'-50%', overflow: 'visible', height: '0px'}}>
+        <Typography variant="h4" style={{textAlign: 'center',textShadow:'1px 1px 2px #000000ff, 1px 1px 2px #000000ff', color:'white'}}>
+          {spec?.name}
+          </Typography>
+        </div>
       </div>
       <canvas ref={stageRef} className={classes.canvas} width="256" height="256" />
       <input ref={zoomRef} step="0.1" onChange={zoomChange} type="range" min="1" max="4" defaultValue={zoom} className={classes.slider} id="myRange"></input>
@@ -389,7 +421,7 @@ queue.addEventListener("complete",()=>{
       
       <Button className={classes.button} color="primary" onClick={goLeft}><ArrowLeftIcon/></Button>
       <IconButton className={classes.button} color="primary" onClick={goUp}><ArrowUpIcon/></IconButton>
-      <ColourPicker colour={colour} onChange={colourChange} />
+      <ColourPicker disableAlpha={false} colour={colour} onChange={colourChange} />
       <IconButton className={classes.button} color="primary" onClick={goDown}><ArrowDownIcon/></IconButton>
       <IconButton className={classes.button} color="primary" onClick={goRight}><ArrowRightIcon/></IconButton>
       

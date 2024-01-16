@@ -42,7 +42,7 @@ const useStyles = makeStyles(theme => {
                     -1px 0px 3px rgba(0,0,0,1)
                     `,
         letterSpacing:'0.05em',
-        fontSize: '150px',
+        fontSize: '100px',
         fontWeight: '900 !important',
     },
     subtleBigHead: { 
@@ -58,7 +58,7 @@ const useStyles = makeStyles(theme => {
                     -1px 0px 3px rgba(0,0,0,1)
                     `,
         letterSpacing:'0.05em',
-        fontSize: '110px',
+        fontSize: '80px',
         fontWeight: '900 !important',
     },
     littleHead: { 
@@ -204,7 +204,7 @@ export default function Home() {
                 <div className="row" style={{display:'flex', alignItems: 'center', gap:'4em', justifyContent:'space-around'}}>     
                     <div className="column" style={{marginLeft:'2em'}}>
                         <Typography variant="h1" classes={{root: classes.subtleBigHead}}>Smart NFTs</Typography><br /><div className="hiding-space">&nbsp;<br /></div>
-                        <Typography variant="h3" classes={{root: classes.subtleLittleHead}}><em>CIP54 - a flexible framework for Javascript NFTs on Cardano</em></Typography><br /><div className="hiding-space">&nbsp;<br /></div>
+                        <Typography variant="h3" classes={{root: classes.subtleLittleHead}}><em>Arden - a flexible framework for Javascript NFTs on Cardano</em></Typography><br /><div className="hiding-space">&nbsp;<br /></div>
                         
                     </div>
                     <div className="column" style={{minWidth:'40%', flexGrow: 1, marginRight:'2em'}}>

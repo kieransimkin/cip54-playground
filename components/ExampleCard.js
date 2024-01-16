@@ -35,7 +35,7 @@ const useStyles = makeStyles(theme => {
       //minHeight: '400px',
       display: 'flex',
       flexDirection:'column',
-      minWidth: '550px'
+      width: '550px'
     },
     actionArea: { 
       height: '100%'

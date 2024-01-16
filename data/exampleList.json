@@ -34,9 +34,9 @@
     "slug":"launchpad",
     "examples":[
       {
-        "title":"Ada Quote",
+        "title":"ADAquote",
         "slug":"adaquote",
-        "description":"Ada Quote NFT",
+        "description":"ADAquote NFT",
         "thumbnail":"adaquote.jpg"
       }
     ]

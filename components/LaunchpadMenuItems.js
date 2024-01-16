@@ -3,16 +3,33 @@ import { MenuItem } from "@material-ui/core";
 import NestedMenuItem from "./NestedMenuItem";
 import launchpadList from '../data/launchpadList.json';
 import MintSmartAvatarDialog from "./dialogs/MintSmartAvatarDialog";
+import WalletContext from "./WalletContext";
 import Link from "next/link";
 import { useState , useEffect, useRef, useContext } from "react";
 const LaunchpadMenuItems = (props) => { 
-    const {parentMenuOpen} = props;
+    const {parentMenuOpen, onDialogOpen, onDialogClose} = props;
     const [mintOpen, setMintOpen] = useState(false);
+    const wallet = useContext(WalletContext);
     const mintClose=()=>{
         setMintOpen(false);
+        if (typeof onDialogClose == 'function') onDialogClose();
     }
     const openMintDialog=(e)=>{
-        setMintOpen(true);
+        if (!wallet.api) { 
+            wallet.connectWallet((connected) => { 
+              if (connected) { 
+                if (typeof onDialogOpen == 'function') onDialogOpen();
+                setMintOpen(true);
+              }
+            }, () => { 
+              console.log('Failed to connect?')
+            });
+          } else { 
+            if (typeof onDialogOpen == 'function') onDialogOpen();
+            setMintOpen(true);
+
+            console.log('not opening connect wallet because already connecdted');
+          }
         e.preventDefault();
     }
     let items = [];

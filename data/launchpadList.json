@@ -6,7 +6,7 @@
       {
         "title":"About Smart Life",
         "slug":"about",
-        "description":"About the Smart Life project",
+        "description":"Smart Life is the first NFT to be minted with the CIP54 standard",
         "thumbnail":"smart-life-alien.png"
       }
     ]
@@ -18,26 +18,19 @@
       {
         "title":"About Smart Avatars",
         "slug":"about",
-        "description":"About the Smart Avatars project",
+        "description":"A revolutionary new approach to NFT avatars",
         "thumbnail":"smart-avatars.png"
-      },
-      {
-        "title":"Mint Now!",
-        "slug":"mint",
-        "notInContents":true,
-        "description":"Work in progress",
-        "thumbnail":""
       }
     ]
   },
   {
-    "title":"ADAquotes",
-    "slug":"adaquotes",
+    "title":"ADAquote",
+    "slug":"adaquote",
     "pages":[
       {
-        "title":"About ADA Quotes",
+        "title":"About ADAquote",
         "slug":"about",
-        "description":"About the ADAquotes project",
+        "description":"ADAquote v2 - launch date TBA",
         "thumbnail":"adaquote.jpg" 
       }
     ]

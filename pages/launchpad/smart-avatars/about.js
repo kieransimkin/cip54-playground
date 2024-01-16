@@ -113,14 +113,16 @@ export default function Launchpad() {
                 What are smart avatars?
               </Typography><br />
               <Typography variant="body1">
-                I haven&apos;t written this yet.
+                Smart Avatars are an evolution of the traditional profile picture NFTs we&apos;re all familiar with.<br />
+                Your smart avatar is a fully interactive playable character which can be used in future blockchain games.<br />
                 <br />
                 &nbsp;<br />
-                Frequency psychology consciousness, wavelength intelligence experience modern intelligence spatial time. Jupiter century galactic, technology brain experience time modern modern objects flow. New flow earth, space wellbeing spirituality materialist meaning relations spirituality spacetime light psychology.
-
-Solar electromagnetic physics good electromagnetic solar solar existence wavelength. Human consciousness orbit wave star light goddess mass. Positive wavelength jupiter mystical vibration gaia light wellbeing, constellation philosophical relativity university gaia.
-
-Stellar wavelength spiritual positive materialism wavelength gaia spatial positive. Hubble planets spirit star solar, planets emotional brain time electromagnetic intelligence materialist university pleiades. Light psychology galaxies spirit spiritual mercury philosophical.
+                <ul className="infolist">
+                  <li>Mint price of 20 ADA</li>
+                  <li>Unlimited mint - policy never locks.</li>
+                  <li>The NFT will be improved over time, early mints will identifiable and unique.</li>
+                  <li>The Policy ID is <span style={{fontFamily:'monospace', fontWeight:600}}>bed65622068b2da7c85ae654b13bdb12aebbd984ad8e612e0fffdead</span></li>
+                  </ul>
                               </Typography><br />
              
               <BigMintButton />

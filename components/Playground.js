@@ -367,7 +367,7 @@ const Playground = function (props) {
           </div>
         </DividerBox>
         <DividerBox onDragEnd={refreshProgram} mode='vertical' style={{width: '80%', minWidth: 100}}>
-          <div style={{outline:'1px solid rgba(0,0,0,0.5)', minHeight: '350px', border: '1px solid #ccc', padding: 5, display: 'flex', alignItems:'stretch', borderRadius: '5px', backgroundColor: theme.palette.background.default, overflowY: 'auto'}}> 
+          <div style={{outline:'1px solid rgba(0,0,0,0.5)', minHeight: '40vh', border: '1px solid #ccc', padding: 5, display: 'flex', alignItems:'stretch', borderRadius: '5px', backgroundColor: theme.palette.background.default, overflowY: 'auto'}}> 
             <CodeMirror  
             style={{flexGrow: 1, display: 'flex', flexDirection: 'column'}}
               value={programCode}
@@ -377,9 +377,9 @@ const Playground = function (props) {
               extensions={[EditorView.lineWrapping,html(),javascript({ jsx: true }),css()]}
             />
           </div>
-          <div style={{outline:'1px solid rgba(0,0,0,0.5)', minHeight: '550px', border: '1px solid #ccc', display: 'flex', flexDirection: 'column', alignItems: 'stretch', padding: 5, borderRadius: '5px', backgroundColor: theme.palette.background.default}}>
+          <div style={{outline:'1px solid rgba(0,0,0,0.5)', minHeight: '40vh', border: '1px solid #ccc', display: 'flex', flexDirection: 'column', alignItems: 'stretch', padding: 5, borderRadius: '5px', backgroundColor: theme.palette.background.default}}>
             <SimulationSelector defaultAddr={defaultAddr} onChange={simulationChange} />
-            <SmartNFTPortal onLink={onLink} loadingContent=<CircularProgress style={{marginTop: '2em', marginLeft: 'auto', marginRight: 'auto'}} /> random={random} loading={portalLoading} style={{flexGrow: 1, overflowY: 'hidden', overflowX: 'hidden', border:'none', outline: '1px solid black'}} smartImports={smartImports} metadata={metadataJSON} />
+            <SmartNFTPortal onLink={onLink} loadingContent={<CircularProgress style={{marginTop: '2em', marginLeft: 'auto', marginRight: 'auto'}} />} random={random} loading={portalLoading} style={{flexGrow: 1, overflowY: 'hidden', overflowX: 'hidden', border:'none', outline: '1px solid black'}} smartImports={smartImports} metadata={metadataJSON} />
           </div>
         </DividerBox>
       </DividerBox>

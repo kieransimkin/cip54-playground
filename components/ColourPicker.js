@@ -21,7 +21,7 @@ import { TwitterTimelineEmbed, TwitterShareButton, TwitterFollowButton, TwitterH
 import { ChromePicker } from 'react-color'
 
 const ColourPicker = (props) => {
-  const {colour, onChange} = props;
+  const {colour, onChange, disableAlpha} = props;
   const theme = useTheme();
   
   const [pickerOpen, setPickerOpen] = useState(false);
@@ -131,7 +131,7 @@ return (
 
       >
       <div style={{margin:'0em'}}>
-      <ChromePicker disableAlpha={false} color={ colour.rgb } onChange={ handleChange } />
+      <ChromePicker disableAlpha={disableAlpha} color={ colour.rgb } onChange={ handleChange } />
       </div>
       </Popover>
      : null }
@@ -142,6 +142,7 @@ return (
 }
 ColourPicker.propTypes = {
   colour:PropTypes.object.isRequired,
-  onChange:PropTypes.func.isRequired
+  onChange:PropTypes.func.isRequired,
+  disableAlpha:PropTypes.bool.isRequired
 };
 export default ColourPicker;

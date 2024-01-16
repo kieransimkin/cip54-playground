@@ -1,5 +1,6 @@
 import React from 'react';
 import Document, { Html, Head, Main, NextScript } from 'next/document';
+import Link from 'next/link';
 import { ServerStyleSheets } from '@material-ui/core/styles';
 
 export default class MyDocument extends Document {
@@ -20,7 +21,7 @@ export default class MyDocument extends Document {
         <body>
           <Main />
           <NextScript />
-          <div className="tandem">...cl1ck</div>
+          <div className="tandem"><Link href="/F41TH/faith13.txt">...cl1ck</Link></div>
         </body>
       </Html>
     );

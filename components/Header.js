@@ -101,6 +101,7 @@ const Header = (props) => {
     // State: 
     const [walletOpen, setWalletOpen] = React.useState(false);
     const [saveAsOpen, setSaveAsOpen] = React.useState(false);
+    const [launchpadDialogIsOpen, setLaunchpadDialogIsOpen] = React.useState(false);
     const [newOpen, setNewOpen] = React.useState(false);
     const [importBlockchainOpen, setImportBlockchainOpen] = React.useState(false);
     const [importZipOpen, setImportZipOpen] = React.useState(false);
@@ -145,7 +146,12 @@ const Header = (props) => {
                     window.cardano[wallet.wallet].isEnabled().then((enabled)=> { 
                         if (enabled){
                             window.cardano[wallet.wallet].enable().catch((error) => { 
-                                alert('Wallet connect error: '+error);
+                                let terror = error;
+                                if (typeof terror === 'object' && terror.info) { 
+                                    terror=terror.info;
+                                }
+                                console.error(error);
+                                alert('Wallet restore error: '+terror);
                                 return false;
                             }).then((api) => { 
                             doOnWalletChange({
@@ -171,6 +177,14 @@ const Header = (props) => {
                 } catch (e) { 
                     console.log(e);
                 }
+            } else { 
+                onWalletChange({
+                    'api': null, 
+                    'wallet': null, 
+                    'stakeAddrRaw':null,
+                    'returnAddrRaw':null,
+                    'connectWallet': connectWallet
+                });
             }
         }
         let dark = localStorage.getItem('cip54-darkmode');
@@ -194,7 +208,7 @@ const Header = (props) => {
         }
     
         timer = setTimeout(() => {
-          if (!hover) {
+          if (!hover && !launchpadDialogIsOpen) {
             toggleVisibility(true, 'none');
             setAnchorEl(null);
           }
@@ -260,7 +274,12 @@ const Header = (props) => {
         try {
             window.cardano[value].isEnabled().then((enabled) => {
                 window.cardano[value].enable().catch((error) => { 
-                        alert('Wallet connect error: '+error);
+                        console.error(error);
+                        let terror = error;
+                        if (typeof terror === 'object' && terror.info) { 
+                            terror=terror.info;
+                        }
+                        alert('Wallet connect error: '+terror);
                         callbackFn.fail();            
                         return false;
                     }).then((api) => { 
@@ -308,6 +327,12 @@ const Header = (props) => {
         setWalletAPI(null);
         setWallet(null);
         setAnchorEl(null);
+    }
+    const launchpadDialogOpen = () => { 
+        setLaunchpadDialogIsOpen(true);
+    } 
+    const launchpadDialogClose = () => { 
+        setLaunchpadDialogIsOpen(false);
     }
     const openNewDialog = () => { 
 
@@ -382,7 +407,7 @@ const Header = (props) => {
                                 <ExamplesMenuItems parentMenuOpen={Boolean(anchorEl)} />
                             </NestedMenuItem></Link>
                             <Link href="/launchpad"><NestedMenuItem onClick={()=>router.push('/launchpad')} direction="left" label="Launchpad..." parentMenuOpen={Boolean(anchorEl)}>
-                                <LaunchpadMenuItems parentMenuOpen={Boolean(anchorEl)} />
+                                <LaunchpadMenuItems onDialogOpen={launchpadDialogOpen} onDialogClose={launchpadDialogClose} parentMenuOpen={Boolean(anchorEl)} />
                             </NestedMenuItem></Link>
                                 <MenuItem onClick={toggleDarkMode}>{darkMode==='dark' ? 'Dark Mode':'Light Mode'}
                                 <div style={{position: 'relative', top:'0px', width:'75px'}}>
