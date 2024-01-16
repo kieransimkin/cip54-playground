@@ -9,8 +9,7 @@
   .c {
     position: relative;
     width: 360; /* Set the desired width of the container */
-    height: 800; /* Set the desired height of the container */
-    margin: 50 auto; /* Adjust the margins as per your layout */
+    margin: 0 auto; /* Adjust the margins as per your layout */
     background-color: #1F1F1F;
   }
   .ic {
@@ -29,16 +28,15 @@
     right: 10; /* Position the text in the right 45% of the image */
     width: 50%; /* Set the width of the overlay text to cover the right 45% of the image */
     color: #fff; /* Set the text color to white (adjust as needed) */
-    padding: 20; /* Add some padding to the text content */
+    padding: 10 15 0 10; /* Add some padding to the text content */
     box-sizing: border-box; /* Include padding in the specified width */ 
   }
   .r {
     position: absolute;
-    bottom: 40; /* Space 40px above the bottom */
+    bottom: 0; /* Space 40px above the bottom */
     left: 50%; /* Center horizontally */
     transform: translateX(-50%);
     width: 340; /* Set the desired width of the rectangle */
-    height: 450; /* Set the desired height of the rectangle */
     background-color: #4b4b4b; /* Set the background color of the rectangle */
     box-sizing: border-box; /* Include the padding and border in the specified width and height */
     padding: 20; /* Add padding around the content */
@@ -58,6 +56,7 @@
     font-size: 44;
     color: #666666;
      transition: all 0.2s;
+     margin: -90 0 0 50;
   }
   button:hover { 
     filter: brightness(200%);
@@ -70,12 +69,13 @@
     flex-direction: column;
     text-shadow: 2px 2px #000000;
     height: 100%;
-    padding: 0 20 20; /* Adjusted padding-top */
+    min-height: 365;
+    padding: 0 10 0 10; /* Adjusted padding-top */
   }
   .ql {
     color: #CECECE;
     font-size: 18;
-    margin-bottom: 14;
+    margin: 7 0 15 0;
   }
   .qm {
     position: absolute;
