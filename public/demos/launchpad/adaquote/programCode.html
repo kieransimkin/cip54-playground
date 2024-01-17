@@ -8,7 +8,14 @@
   }
   body { 
     height:100%;
-    overflow: hidden;
+    overflow-y: auto;
+    overflow-x: hidden;
+  }
+  @media (max-height: 701px) {
+    body {
+      transform: scale(0.5);
+      transform-origin: 0 0;
+    }
   }
   .c {
     position: relative;
