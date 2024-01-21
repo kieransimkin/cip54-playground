@@ -19,9 +19,6 @@
     .c { 
       left: 50%;
     }
-    #sm { 
-      display: none;
-    }
   }
   .c {
     position: relative;
@@ -121,7 +118,7 @@
     height: 96%;
     z-index: -2;
   }
-  #r1,#r2,#r3,#r4 {
+  #r1,#r2,#r3 {
     color: #AAAAAA;
     font-size: 16;
     margin: 6 0;
@@ -182,7 +179,6 @@
         s('r1',q[(i+1)%l]);
         s('r2',q[(i+2)%l]);
         s('r3',q[(i+3)%l]);
-        s('r4',q[(i+4)%l]);
     }
     window.addEventListener("load", (event) => {
         if (nft) { 
@@ -243,12 +239,6 @@
             <hr class="dl" />
             <div class="go"></div>
             <p id="r3" />
-            <div id="sm">
-            <hr class="dl" />
-            <div class="go"></div>
-            <p id="r4" />
-            <div class="qm"></div>
-            </div>
     </div>
     <br />&nbsp;<br />
          </div>
