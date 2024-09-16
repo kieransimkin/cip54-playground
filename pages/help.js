@@ -85,6 +85,12 @@ const useStyles = makeStyles(theme => {
       marginLeft: '2em',
       marginRight: '2em',
       marginTop:'8.5em'
+    },
+    clgimage: { 
+      filter: 'sepia(100%) saturate(300%) brightness(70%) hue-rotate('+(theme.palette.type=='dark'?'190deg':'180deg')+')',
+      '&:hover': { 
+        filter: 'sepia(100%) saturate(300%) brightness(70%) hue-rotate('+(theme.palette.type=='dark'?'240deg':'250deg')+')'
+      }
     }
   };
 });
@@ -217,7 +223,7 @@ export default function Help() {
               Cardano Looking Glass is a full blockchain explorer with CIP54 support built-in. Once you&apos;ve minted your collections on mainnet, you can view them here in all their glory.
               </Typography><br />
               <a href="https://clg.wtf/" target="_blank" rel="noreferrer">
-                <Image src="/clg-logo.svg" width="200" height="100" alt="Cardano Looking Glass - A Visual Blockchain Explorer for Cardano" />
+                <Image className={classes.clgimage} src="/clg-logo.svg" width="200" height="100" alt="Cardano Looking Glass - A Visual Blockchain Explorer for Cardano" />
               </a>
               
               </ContentCard>
