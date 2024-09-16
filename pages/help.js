@@ -208,6 +208,28 @@ export default function Help() {
           <br />&nbsp;<br />
           <div className={classes.row+' row'}>
             
+            <div className={classes.bigCol+' column'}>
+            <ContentCard>
+              <Typography variant="h2" color="textSecondary">
+                Cardano Looking Glass
+              </Typography><br />
+              <Typography variant="body1">
+              Cardano Looking Glass is a full blockchain explorer with CIP54 support built-in. Once you've minted your collections on mainnet, you can view them here in all their glory.
+              </Typography><br />
+              <a href="https://clg.wtf/" target="_blank" rel="noreferrer">
+                <Image src="/clg-logo.svg" width="200" height="100" alt="Cardano Looking Glass - A Visual Blockchain Explorer for Cardano" />
+              </a>
+              
+              </ContentCard>
+            </div> 
+            <div className={classes.smallCol+' column'}> 
+            
+              <PictureCard  href="https://clg.wtf/" target="_blank" src="/clg.png" alt="Cardano Looking Glass" width={1702} height={1281} />
+            </div>
+          </div>
+          <br />&nbsp;<br />
+          <div className={classes.row+' row'}>
+            
             <div>
               <ContentCard>
               <Typography variant="h2" color="textSecondary">
