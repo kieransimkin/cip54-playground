@@ -5,6 +5,12 @@ import { bech32 } from "bech32";
 
 
 function tokenImageFromUnit(unit, params = {} ) { 
+  if (!unit || unit.length < 57) { 
+    return null;
+  }
+  // Switching to using clg as our NFT CDN provider instead of nftcdn.io
+  return 'https://clg.wtf/api/getTokenThumb?unit='+unit;
+    /*
     if (!process.env.NFTCDN_KEY) throw new Error("Missing environment variables: NFTCDN_KEY")
     if (!unit || unit.length < 57) { 
       return null;
@@ -22,6 +28,7 @@ function tokenImageFromUnit(unit, params = {} ) {
       .update(url)
       .digest("base64url");
     return buildUrl(bech, params);
+    //*/
 }
 
 function buildUrl(token, params) {
